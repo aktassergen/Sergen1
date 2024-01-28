@@ -1,0 +1,75 @@
+body {
+    align-items: center;/*Yani sayfa yüksekliği boyunca öğeler dikey olarak ortalanır.*/
+    justify-content: center;/*Yani sayfa genişliği boyunca öğeler yatay olarak ortalanır.*/
+    height: 36vh;
+    margin: 0;
+}
+
+.blue-border-box {
+    width: 1000px;
+    height: 1000px;
+    background-color: white;
+    border: 5px solid #3498db; 
+    position: relative;
+}
+.user-box {
+    width: 50px;
+    height: 50px;
+    background-color: darkblue;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.transparent-box {
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    position: absolute;/* en yakın pozisyonlu üst öğenin içinde konumlandırılır.*/
+    border: 2px solid #3498db;
+    top: 60px; 
+    left: 5px; 
+}
+
+
+.intersecting-box {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 182, 193, 0.7); 
+    position: relative;/* kendi normal konumlandırma akışında kalır*/
+    top: 30;
+    left: 190px;
+}
+
+.sticky-box {
+    width: 50px;
+    height: 50px;
+    background-color: limegreen; 
+    position: sticky;/* Bu özellik, bir öğe belirli bir konuma gelene kadar normal akışta kalır ve ardından belirlenen konuma yapışarak sabitlenir.*/
+    top: 268px;
+    left: 163px;
+    margin-top: -50px; 
+
+    
+}
+.orange-box,
+.light-blue-box {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+.orange-box {
+    background-color: orange;
+    top: 50;
+    left: 20;
+}
+
+.light-blue-box {
+    background-color: lightblue;
+    top: 40;
+    left: 30;
+}
+
+
+

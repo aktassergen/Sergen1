@@ -1,0 +1,45 @@
+body {
+    background-color: white;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.menu-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu-form {
+    width: 200px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 0 10px;
+}
+
+.menu-form img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.menu-form h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    display: flex;
+    justify-content: space-between; 
+    padding: 0 10px;
+}
+
+.menu-form p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+    padding: 0 10px;
+}
