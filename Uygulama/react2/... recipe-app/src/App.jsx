@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/header/Header'
 import Home from './components/home/Home'
 import RecipeList from './components/recipe-list/RecipeList'
+// import TeoriUseEffect from './components/TeoriUseEffect'
 
 function App() {
   const [recipes, setRecipes] =  useState([])
@@ -85,6 +86,7 @@ function App() {
     <>
       <Header/>
       <Home/>
+      {/* <TeoriUseEffect/> */}
       <RecipeList recipes={recipes}/>
       {/* <RecipeList myName={myName} myLName={myLName} age={age} title={"my title"} myArray={myArray}/> */}
     </>

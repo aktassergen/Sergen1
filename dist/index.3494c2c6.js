@@ -27161,12 +27161,15 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "App", ()=>App);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _helloMessage = require("./components/HelloMessage/HelloMessage");
+var _todos = require("./components/Todos/Todos");
 function App() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _helloMessage.HelloMessage), {}, void 0, false, {
-        fileName: "uygulama/react/App.js",
-        lineNumber: 5,
-        columnNumber: 12
-    }, this);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _todos.Todos), {}, void 0, false, {
+            fileName: "uygulama/react/App.js",
+            lineNumber: 7,
+            columnNumber: 5
+        }, this)
+    }, void 0, false);
 }
 _c = App;
 var _c;
@@ -27177,7 +27180,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./components/HelloMessage/HelloMessage":"fqRHC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fqRHC":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./components/HelloMessage/HelloMessage":"fqRHC","./components/Todos/Todos":"95jwm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fqRHC":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$c286 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27188,12 +27191,38 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "HelloMessage", ()=>HelloMessage);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function HelloMessage() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-        children: "Hello Message"
-    }, void 0, false, {
+function HelloMessage(props) {
+    console.log("props", props);
+    // Her komponent sayfada bir şeyleri render etmek istiyorsa JSX döndürmesi gerekir
+    // JSX bir HTML DEĞİLDİR!
+    // JSX'in HTML'den farklı olduğu noktalar neler?
+    // 1. Sadece bir element return edilebilir.
+    // 2. Elementlere class verirken "className" isimini kullanmamız gerekir.
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "title",
+                children: [
+                    "Hello ",
+                    props.name,
+                    ", how are you today? "
+                ]
+            }, void 0, true, {
+                fileName: "uygulama/react/components/HelloMessage/HelloMessage.jsx",
+                lineNumber: 13,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                children: "React'e Ho\u015Fgeldin!"
+            }, void 0, false, {
+                fileName: "uygulama/react/components/HelloMessage/HelloMessage.jsx",
+                lineNumber: 14,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "uygulama/react/components/HelloMessage/HelloMessage.jsx",
-        lineNumber: 3,
+        lineNumber: 11,
         columnNumber: 12
     }, this);
 }
@@ -27374,6 +27403,8 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7422ead32dcc1e6b":"786KC"}]},["6H93S","1xC6H","4CPGN"], "4CPGN", "parcelRequire200e")
+},{"7422ead32dcc1e6b":"786KC"}],"95jwm":[function(require,module,exports) {
+
+},{}]},["6H93S","1xC6H","4CPGN"], "4CPGN", "parcelRequire200e")
 
 //# sourceMappingURL=index.3494c2c6.js.map
