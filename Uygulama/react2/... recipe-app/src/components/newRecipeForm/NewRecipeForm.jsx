@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./newRecipeForm.css";
 
-const NewRecipeForm = () => {
+const NewRecipeForm = ({ onAddRecipe }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -10,8 +10,15 @@ const NewRecipeForm = () => {
         // kaydetme işleminden sonra sayfanın yeniden yüklenmesini engelliyoruz.
         event.preventDefault()
         // normalde burada datayı server'a submit ediyoruz.
-        console.log("Submitting new recipe", {title, description, image});
+        const newRecipe = {
+          title,
+          description,
+          image,
+        };
+
+
         // formun içeriğini temizliyoruz.
+        onAddRecipe(newRecipe);
         setTitle("")
         setDescription("")
         setImage("")

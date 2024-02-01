@@ -8,7 +8,7 @@ const Home = () => {
 
     <h1>Welcome to the Recipe Sharing Platform</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, incidunt.</p>
-    <NewRecipeForm/>
+    {/* <NewRecipeForm/> */}
     </div>
   )
 }

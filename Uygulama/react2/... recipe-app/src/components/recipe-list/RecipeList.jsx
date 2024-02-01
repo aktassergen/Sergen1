@@ -12,12 +12,20 @@ import './recipeList.css'
 //     </div>
 //   )
 // }
-const RecipeList = ({recipes}) => {
+const RecipeList = ({ recipes, deleteNote, startEditing }) => {
   return (
     <div className='recipe-list'>
-        {recipes.map((recipe) => <RecipeCard key={recipe.id} {...recipe} />)}
+      {recipes.map((recipe) => (
+        <div key={recipe.id}>
+          <RecipeCard
+            {...recipe}
+            deleteNote={deleteNote}
+            onEdit={() => startEditing(recipe)} // Burada 
+          />
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
 export default RecipeList
