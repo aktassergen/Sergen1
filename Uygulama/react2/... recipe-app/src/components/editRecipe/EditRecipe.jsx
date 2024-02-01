@@ -1,52 +1,46 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const RecipeEdit = ({ recipe, updateRecipe, onCancel }) => {
-  const [title, setTitle] = useState(recipe.title);
-  const [description, setDescription] = useState(recipe.description);
-  const [image, setImage] = useState(recipe.image);
+const EditRecipe = ({ recipe, onSave, onCancel }) => {
+  const [editedRecipe, setEditedRecipe] = useState({ ...recipe });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const updatedRecipe = {
-      id: recipe.id,
-      title,
-      description,
-      image,
-    };
-    updateRecipe(updatedRecipe);
+  const handleSave = async () => {
+    try {
+      const response = await axios.put(`http://localhost:3001/recipes/${editedRecipe.id}`, editedRecipe);
+      onSave(response.data);
+      window.location.reload();
+    } catch (error) {
+      console.error('Güncelleme sırasında bir hata oluştu', error);
+    }
+  };
+
+  const handleCancel = () => {
+    onCancel();
   };
 
   return (
-    <div className="recipe-edit">
-      <h2>Edit Recipe</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <label>Description:</label>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-
-        <label>Image URL:</label>
-        <input
-          type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-
-        <div className="buttons">
-          <button type="submit">Save</button>
-          <button onClick={onCancel}>Cancel</button>
-        </div>
-      </form>
+    <div>
+      <label>Title:</label>
+      <input
+        type='text'
+        value={editedRecipe.title}
+        onChange={(e) => setEditedRecipe({ ...editedRecipe, title: e.target.value })}
+      />
+      <label>Description:</label>
+      <textarea
+        value={editedRecipe.description}
+        onChange={(e) => setEditedRecipe({ ...editedRecipe, description: e.target.value })}
+      ></textarea>
+      <label>Image URL:</label>
+      <input
+        type='text'
+        value={editedRecipe.image}
+        onChange={(e) => setEditedRecipe({ ...editedRecipe, image: e.target.value })}
+      />
+      <button onClick={handleSave}>Save</button>
+      <button onClick={handleCancel}>Cancel</button>
     </div>
   );
 };
 
-export default RecipeEdit;
+export default EditRecipe;

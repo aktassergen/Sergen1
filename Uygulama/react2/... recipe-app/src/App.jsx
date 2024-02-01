@@ -34,15 +34,18 @@ function App() {
     setRecipes(deleteRecipes);
   };
 
-  const startEditing = (recipe) => {
-    console.log("Edit recipe:", recipe);
+  const startEditing = (editedRecipe) => {
+    const updatedRecipes = recipes.map((recipe) =>
+      recipe.id === editedRecipe.id ? editedRecipe : recipe
+    );
+    setRecipes(updatedRecipes);
   };
 
   return (
     <>
       <Header />
       <Home />
-      <NewRecipeForm onAddRecipe={handleAddRecipe} />
+      <NewRecipeForm onAddRecipe={handleAddRecipe}   />
       <RecipeList recipes={recipes} deleteNote={deleteRecipe} startEditing={startEditing} />
     </>
   );
