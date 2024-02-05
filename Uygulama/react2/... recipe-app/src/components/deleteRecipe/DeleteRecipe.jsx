@@ -3,14 +3,15 @@ import axios from 'axios';
 
 const DeleteRecipe = ({ recipeId, onDelete }) => {
   const handleDelete = async () => {
-    try {
-      await axios.delete(`http://localhost:3001/recipes/${recipeId}`);
-      onDelete(); // Silme işlemi başarılı olduğunda ana bileşene bilgi gönder
-      window.location.reload();
-    } catch (error) {
-      console.error('Silme işlemi sırasında bir hata oluştu', error);
-    }
-  };
+    axios
+    .delete(`http://localhost:3001/recipes/${recipeId}`)
+    .then(() => {
+      onDelete();
+    })
+    .catch((error) => {
+      console.error('An error occurred during deletion', error);
+    });
+};
 
   return (
     <button onClick={handleDelete}> Delete</button>
