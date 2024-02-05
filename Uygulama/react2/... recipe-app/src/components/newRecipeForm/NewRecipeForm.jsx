@@ -6,8 +6,9 @@ const NewRecipeForm = ({ onAddRecipe }) => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     // kaydetme işleminden sonra sayfanın yeniden yüklenmesini engelliyoruz.
     event.preventDefault();
 
@@ -29,19 +30,32 @@ const NewRecipeForm = ({ onAddRecipe }) => {
       return;
     }
 
-    // normalde burada datayı server'a submit ediyoruz.
-    const newRecipe = {
-      title,
-      description,
-      image,
-    };
+    // Loading durumunu başlat
+    setIsLoading(true);
 
-    // formun içeriğini temizliyoruz.
-    onAddRecipe(newRecipe);
-    setTitle("");
-    setDescription("");
-    setImage("");
-    setErrors({});
+    try {
+      // normalde burada datayı server'a submit ediyoruz.
+      const newRecipe = {
+        title,
+        description,
+        image,
+      };
+
+      // Simüle edilmiş bir asenkron işlem (API çağrısı gibi)
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // formun içeriğini temizliyoruz.
+      onAddRecipe(newRecipe);
+      setTitle("");
+      setDescription("");
+      setImage("");
+      setErrors({});
+    } catch (error) {
+      console.error("Recipe submission failed", error);
+    } finally {
+      // Loading durumunu sıfırla
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -66,7 +80,9 @@ const NewRecipeForm = ({ onAddRecipe }) => {
         placeholder="Image URL"
       />
       {errors.image && <p className="error-message">{errors.image}</p>}
-      <button type="submit">Add Recipe</button>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? "Loading..." : "Add Recipe"}
+      </button>
     </form>
   );
 };
