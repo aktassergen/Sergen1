@@ -18,8 +18,8 @@ const RecipeList = ({ recipes, deleteNote, startEditing }) => {
     deleteNote(recipeId);
   };
 
-  const handleEdit = (recipe) => {
-    startEditing(recipe);
+  const handleEdit = (editedRecipe) => {
+    startEditing(editedRecipe);
   };
 
   return (
@@ -29,7 +29,7 @@ const RecipeList = ({ recipes, deleteNote, startEditing }) => {
           <RecipeCard
             {...recipe}
             deleteNote={() => handleDelete(recipe.id)}
-            onEdit={() => handleEdit(recipe)}
+            onEdit={handleEdit} // Sadece fonksiyonu iletiyoruz, veri değil
           />
         </div>
       ))}

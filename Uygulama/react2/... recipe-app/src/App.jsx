@@ -41,11 +41,12 @@ function App() {
     setRecipes(updatedRecipes);
   };
 
+
   return (
     <>
       <Header />
       <Home />
-      <NewRecipeForm onAddRecipe={handleAddRecipe}   />
+      <NewRecipeForm onAddRecipe={handleAddRecipe} />
       <RecipeList recipes={recipes} deleteNote={deleteRecipe} startEditing={startEditing} />
     </>
   );

@@ -1,5 +1,6 @@
+// RecipeCard.jsx
 import React, { useState } from 'react';
-import './recipeCard.css'
+import './recipeCard.css';
 import DeleteRecipe from '../deleteRecipe/DeleteRecipe';
 import EditRecipe from '../editRecipe/EditRecipe';
 
@@ -14,6 +15,12 @@ const RecipeCard = ({ id, title, description, image, deleteNote, onEdit }) => {
     setIsEditing(false);
   };
 
+  const handleSaveEdit = (editedRecipe) => {
+    // Save'e bastığımızda bu fonksiyon çağrılacak
+    onEdit(editedRecipe);
+    handleCancelEdit();
+  };
+
   return (
     <div className='recipe-card'>
       <img src={image} alt={title} />
@@ -22,10 +29,7 @@ const RecipeCard = ({ id, title, description, image, deleteNote, onEdit }) => {
       {isEditing ? (
         <EditRecipe
           recipe={{ id, title, description, image }}
-          onSave={(editedRecipe) => {
-            onEdit(editedRecipe);
-            handleCancelEdit();
-          }}
+          onSave={handleSaveEdit} // Save'e bastığımızda bu fonksiyonu çağıracağız
           onCancel={handleCancelEdit}
         />
       ) : (
