@@ -1,4 +1,3 @@
-// RecipeCard.jsx
 import React, { useState } from 'react';
 import './recipeCard.css';
 import DeleteRecipe from '../deleteRecipe/DeleteRecipe';
@@ -16,7 +15,6 @@ const RecipeCard = ({ id, title, description, image, deleteNote, onEdit }) => {
   };
 
   const handleSaveEdit = (editedRecipe) => {
-    // Save'e bastığımızda bu fonksiyon çağrılacak
     onEdit(editedRecipe);
     handleCancelEdit();
   };
@@ -29,7 +27,7 @@ const RecipeCard = ({ id, title, description, image, deleteNote, onEdit }) => {
       {isEditing ? (
         <EditRecipe
           recipe={{ id, title, description, image }}
-          onSave={handleSaveEdit} // Save'e bastığımızda bu fonksiyonu çağıracağız
+          onSave={handleSaveEdit} 
           onCancel={handleCancelEdit}
         />
       ) : (

@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import './App.css';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import RecipeList from './components/recipe-list/RecipeList';
 import axios from 'axios';
 import NewRecipeForm from './components/newRecipeForm/NewRecipeForm';
+import { UserPreferencesContext } from './context/UserPreferencesContext';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
-
+  const { theme } = useContext(UserPreferencesContext);
+  
   useEffect(() => {
     axios
       .get('http://localhost:3001/recipes')
@@ -17,6 +19,8 @@ function App() {
         console.log('Tarifler alınırken bir hata oluştu!', error);
       });
   }, []);
+
+  
 
   const handleAddRecipe = (newRecipe) => {
     axios
@@ -43,12 +47,13 @@ function App() {
 
 
   return (
-    <>
+    
+    <div  className={`app ${theme}`}>
       <Header />
       <Home />
       <NewRecipeForm onAddRecipe={handleAddRecipe} />
       <RecipeList recipes={recipes} deleteNote={deleteRecipe} startEditing={startEditing} />
-    </>
+    </div>
   );
 }
 
