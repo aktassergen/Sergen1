@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './recipeCard.css';
-import DeleteRecipe from '../deleteRecipe/DeleteRecipe';
-import EditRecipe from '../editRecipe/EditRecipe';
 
-const RecipeCard = ({ id, title, description, image, deleteNote, onEdit }) => {
+const RecipeCard = ({ id, title, description, image, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(title);
+  const [editedDescription, setEditedDescription] = useState(description);
+  const [editedImage, setEditedImage] = useState(image);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -12,11 +13,21 @@ const RecipeCard = ({ id, title, description, image, deleteNote, onEdit }) => {
 
   const handleCancelEdit = () => {
     setIsEditing(false);
+    // Düzenleme iptal edildiğinde, giriş alanlarını orijinal değerlerine sıfırla
+    setEditedTitle(title);
+    setEditedDescription(description);
+    setEditedImage(image);
   };
 
-  const handleSaveEdit = (editedRecipe) => {
-    onEdit(editedRecipe);
-    handleCancelEdit();
+  const handleSaveEdit = () => {
+    // Düzenleme işlemi tamamlandığında, yeni değerleri ile bir nesne oluşturup onEdit fonksiyonuna geçir
+    onEdit({ id, title: editedTitle, description: editedDescription, image: editedImage });
+    setIsEditing(false);
+  };
+
+  const handleDelete = () => {
+    // Silme işlemi onDelete fonksiyonu aracılığıyla gerçekleştirilir
+    onDelete(id);
   };
 
   return (
@@ -25,15 +36,31 @@ const RecipeCard = ({ id, title, description, image, deleteNote, onEdit }) => {
       <h3>{title}</h3>
       <p>{description}</p>
       {isEditing ? (
-        <EditRecipe
-          recipe={{ id, title, description, image }}
-          onSave={handleSaveEdit} 
-          onCancel={handleCancelEdit}
-        />
+        <div>
+          <label>Title:</label>
+          <input
+            type='text'
+            value={editedTitle}
+            onChange={(e) => setEditedTitle(e.target.value)}
+          />
+          <label>Description:</label>
+          <textarea
+            value={editedDescription}
+            onChange={(e) => setEditedDescription(e.target.value)}
+          ></textarea>
+          <label>Image URL:</label>
+          <input
+            type='text'
+            value={editedImage}
+            onChange={(e) => setEditedImage(e.target.value)}
+          />
+          <button onClick={handleSaveEdit}>Save</button>
+          <button onClick={handleCancelEdit}>Cancel</button>
+        </div>
       ) : (
         <>
           <button onClick={handleEdit}>Edit</button>
-          <DeleteRecipe recipeId={id} onDelete={deleteNote} />
+          <button onClick={handleDelete}>Delete</button>
         </>
       )}
     </div>

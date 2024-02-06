@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./newRecipeForm.css";
+import { useApi } from "../../context/ApiContext";
 
-const NewRecipeForm = ({ onAddRecipe }) => {
+const NewRecipeForm = () => {
+  const { addRecipe } = useApi(); // ApiContext'ten addRecipe fonksiyonunu al
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -9,10 +12,8 @@ const NewRecipeForm = ({ onAddRecipe }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
-    // kaydetme işleminden sonra sayfanın yeniden yüklenmesini engelliyoruz.
     event.preventDefault();
 
-    // Her alanın dolu olup olmadığını kontrol et
     const errors = {};
     if (!title.trim()) {
       errors.title = "Recipe title cannot be empty";
@@ -24,28 +25,23 @@ const NewRecipeForm = ({ onAddRecipe }) => {
       errors.image = "Image URL cannot be empty";
     }
 
-    // Hata varsa setErrors ile state'i güncelle ve kaydetme işlemi yapma
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
       return;
     }
 
-    // Loading durumunu başlat
     setIsLoading(true);
 
     try {
-      // normalde burada datayı server'a submit ediyoruz.
       const newRecipe = {
         title,
         description,
         image,
       };
 
-      // Simüle edilmiş bir asenkron işlem (API çağrısı gibi)
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Yeni tarifi API'ye gönder ve ardından listeye ekle
+      await addRecipe(newRecipe);
 
-      // formun içeriğini temizliyoruz.
-      onAddRecipe(newRecipe);
       setTitle("");
       setDescription("");
       setImage("");
@@ -53,7 +49,6 @@ const NewRecipeForm = ({ onAddRecipe }) => {
     } catch (error) {
       console.error("Recipe submission failed", error);
     } finally {
-      // Loading durumunu sıfırla
       setIsLoading(false);
     }
   };

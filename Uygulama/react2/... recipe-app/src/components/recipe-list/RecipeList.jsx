@@ -1,5 +1,6 @@
 import React from 'react'
 import RecipeCard from '../recipe-card/RecipeCard'
+import { useApi } from '../../context/ApiContext';
 import './recipeList.css' 
 // const RecipeList = ({myName, myLName, age, title, myArray}) => {
 //   return (
@@ -13,13 +14,11 @@ import './recipeList.css'
 //   )
 // }
 
-const RecipeList = ({ recipes, deleteNote, startEditing }) => {
-  const handleDelete = (recipeId) => {
-    deleteNote(recipeId);
-  };
+const RecipeList = () => {
+  const { recipes, deleteRecipe, editRecipe } = useApi();
 
-  const handleEdit = (editedRecipe) => {
-    startEditing(editedRecipe);
+  const handleDelete = (id) => {
+    deleteRecipe(id);
   };
 
   return (
@@ -28,8 +27,8 @@ const RecipeList = ({ recipes, deleteNote, startEditing }) => {
         <div key={recipe.id}>
           <RecipeCard
             {...recipe}
-            deleteNote={() => handleDelete(recipe.id)}
-            onEdit={handleEdit} // Sadece fonksiyonu iletiyoruz, veri değil
+            onDelete={handleDelete} // onDelete prop'u ile delete işlemi sağlanır
+            onEdit={editRecipe} // Sadece fonksiyonu iletiyoruz, veri değil
           />
         </div>
       ))}
