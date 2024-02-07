@@ -2,14 +2,18 @@
 import React, { useContext } from 'react';
 import './Home.css';
 import { UserPreferencesContext } from '../../context/UserPreferencesContext';
+import NewRecipeForm from '../newRecipeForm/NewRecipeForm'; // NewRecipeForm bileşenini import et
+import RecipeList from '../recipe-list/RecipeList'; // NewRecipeForm bileşenini import et
 
 const Home = () => {
   const { theme } = useContext(UserPreferencesContext);
 
   return (
-    <div className='home' style={{ backgroundColor: theme === 'light' ? '#f5f5f5' : '#333' }}>
-      <h1>Welcome to the Recipe Sharing Platform</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, incidunt.</p>
+    <div className="container"> {/* Stil sınıfını ekle */}
+      <h1>Welcome to Recipe Platform!</h1>
+      <p>This is the home page.</p>
+      <NewRecipeForm />
+      <RecipeList />
     </div>
   );
 }

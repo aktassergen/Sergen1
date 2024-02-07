@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './header.css';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { UserPreferencesContext } from '../../context/UserPreferencesContext';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(UserPreferencesContext);
@@ -11,9 +12,9 @@ const Header = () => {
       <div className="logo">Recipe Platform</div>
       <nav className="navbar">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Add Recipe</a></li>
-          <li><a href="#">About</a></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/recipe-list">Recipe List</Link></li>
+          <li><Link to="/settings">Settings</Link></li>
         </ul>
       </nav>
       <DarkModeSwitch

@@ -1,16 +1,5 @@
 
-
-.home {
-    text-align: center;
+  .container {
+    text-align: center; /* Yazıları ortalamak için */
     padding: 2rem 3rem;
-    /* padding: 20px;
-    margin-top: 20px;
-    background-color: #f5f5f5;  */ 
-    /* Varsayılan arka plan rengi */
-    /* transition: background-color 0.9s ease;  */
-    /* Arka plan rengi geçişi */
-    /* border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);  */
-    /* Hafif bir gölge efekti */
   }
-  
