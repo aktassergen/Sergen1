@@ -32,16 +32,26 @@ export const ApiProvider = ({ children }) => {
       });
   };
 
-  const deleteRecipe = (id) => {
-    const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
-    setRecipes(updatedRecipes);
+  const deleteRecipe = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/recipes/${id}`);
+      const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
+      setRecipes(updatedRecipes);
+    } catch (error) {
+      console.log('Tarif silinirken bir hata oluştu!', error);
+    }
   };
 
-  const editRecipe = (editedRecipe) => {
-    const updatedRecipes = recipes.map((recipe) =>
-      recipe.id === editedRecipe.id ? editedRecipe : recipe
-    );
-    setRecipes(updatedRecipes);
+  const editRecipe = async (editedRecipe) => {
+    try {
+      await axios.put(`http://localhost:3001/recipes/${editedRecipe.id}`, editedRecipe);
+      const updatedRecipes = recipes.map((recipe) =>
+        recipe.id === editedRecipe.id ? editedRecipe : recipe
+      );
+      setRecipes(updatedRecipes);
+    } catch (error) {
+      console.log('Tarif güncellenirken bir hata oluştu!', error);
+    }
   };
 
   return (
