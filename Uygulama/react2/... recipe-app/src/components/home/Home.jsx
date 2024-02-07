@@ -1,16 +1,17 @@
-import React from 'react'
-import './Home.css'
-import NewRecipeForm from '../newRecipeForm/NewRecipeForm'
+// Home.jsx
+import React, { useContext } from 'react';
+import './Home.css';
+import { UserPreferencesContext } from '../../context/UserPreferencesContext';
 
 const Home = () => {
-  return (
-    <div className='home'>
+  const { theme } = useContext(UserPreferencesContext);
 
-    <h1>Welcome to the Recipe Sharing Platform</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, incidunt.</p>
-    {/* <NewRecipeForm/> */}
+  return (
+    <div className='home' style={{ backgroundColor: theme === 'light' ? '#f5f5f5' : '#333' }}>
+      <h1>Welcome to the Recipe Sharing Platform</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, incidunt.</p>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
