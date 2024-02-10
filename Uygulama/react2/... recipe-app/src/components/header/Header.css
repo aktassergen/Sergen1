@@ -3,27 +3,33 @@
     display: flex;
     color: white;
     justify-content: space-between;
-    align-items: center; /* Navbar'ı dikeyde ortalamak için */
+    align-items: center; 
     padding: 20px;
   }
   
   .navbar ul {
     display: flex;
-    gap: 10px;
+    gap: 50px;
+    margin-left: -110px; /* Sol kenardan boşluk bırakmamak için */
+    padding-left: 0; /* Sol kenardan boşluk bırakmamak için */
+  }
+  .logo {
+    font-size: 25px; 
   }
   
   .header nav ul {
     list-style: none;
-    display: flex; /* Navbar'ı yatayda hizalamak için */
+    display: flex; 
     gap: 10px;
   }
   
   .header nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-size: 25px; 
+
   }
-  
-  /* DarkModeSwitch bileşeninin stilini düzenlemek için */
+ 
   .react-toggle-track {
     background-color: #333;
   }

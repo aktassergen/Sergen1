@@ -1,12 +1,16 @@
 .new-recipe-form{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     width: 60%;
     margin: 2rem auto;
 }
 
 .new-recipe-form input,
 .new-recipe-form textarea{
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+}
+
+.new-recipe-form button{
+    background-color: #ff8c00;
 }

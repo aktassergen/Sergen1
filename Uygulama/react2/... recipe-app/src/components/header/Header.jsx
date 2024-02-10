@@ -25,8 +25,8 @@ const Header = () => {
       <nav className="navbar">
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/recipe-list">Recipe List</Link></li>
-          <li><Link to="/settings">Settings</Link></li>
+          <li><Link to="/recipe-list">Recipes</Link></li>
+          <li><Link to="/settings">Profile</Link></li>
           <button onClick={isAuthenticated ? handleLogout : handleLogin} >{isAuthenticated ? "Logout" : "Login"}</button>
         </ul>
       </nav>

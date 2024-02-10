@@ -22,7 +22,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/recipe-list" element={<RecipeList />} />
-            <Route path="/settings" element={<Setting />} /> {/* Eklendi */}
+            {/* <Route path="/settings" element={<Setting />} />  */}
+            <Route
+              path="/settings"
+              element={<PrivateRoute element={<Setting />} />}
+            />
           </Routes>
         </Router>
       </div>

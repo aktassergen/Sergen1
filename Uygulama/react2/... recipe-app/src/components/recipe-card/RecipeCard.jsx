@@ -54,14 +54,16 @@ const RecipeCard = ({ id, title, description, image, onEdit, onDelete }) => {
             value={editedImage}
             onChange={(e) => setEditedImage(e.target.value)}
           />
+          <div className="recipe-card-button">
           <button onClick={handleSaveEdit}>Save</button>
           <button onClick={handleCancelEdit}>Cancel</button>
+          </div>
         </div>
       ) : (
-        <>
-          <button onClick={handleEdit}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
-        </>
+        <div className="recipe-card-buttons">
+        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleDelete}>Delete</button>
+      </div>
       )}
     </div>
   );

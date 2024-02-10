@@ -1,18 +1,49 @@
-.recipe-card{
+.recipe-card {
     width: 300px;
-    background-color: #ddd;
+    height: 550px;
+    background-color: #968078; /* Daha turuncuya yakın bir renk */
     padding: 20px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-}
-
-.recipe-card img{
+  }
+  
+  .recipe-card img {
     width: 100%;
+    height: 240px;
     border-radius: 8px;
-
-}
-.recipe-card h3{
+  }
+  
+  .recipe-card h3 {
     margin: 8px;
-}
+  }
+  .recipe-card-buttons {
+    margin-top: auto; 
+    display: flex;
+    justify-content: space-between; 
+    
+  }
+  .recipe-card-button{
+    margin-top: auto; 
+    display: flex;
+    justify-content: space-between; 
+  }
+  .recipe-card-button button {
+    flex: 1; 
+    margin-right: 5px; 
+    background-color: #ff8c00; 
+    color: #0e0c0c; 
+  }
+
+  .recipe-card-buttons button {
+    flex: 1; 
+    margin-right: 5px; 
+    background-color: #ff8c00; 
+    color: #0e0c0c; 
+  }
+
+
+
+
+  

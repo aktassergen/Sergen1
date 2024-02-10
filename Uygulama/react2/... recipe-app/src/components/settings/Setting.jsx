@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './Setting.css'
 
 const Settings = () => {
   const [user, setUser] = useState({});
@@ -34,9 +35,18 @@ const Settings = () => {
   return (
     <div className='user-card'>
       <img src={user.avatar} alt={user.name} />
-      <p>{user.name}</p>
-      <p>{user.role}</p>
-      <p>{user.email}</p>
+      <h1>User Information</h1>
+      <div className="user-info">
+        <div>
+          <h3><span className="info-label">Name:</span> <span className="info-value">{user.name}</span></h3>
+        </div>
+        <div>
+          <h3><span className="info-label">Role:</span> <span className="info-value">{user.role}</span></h3>
+        </div>
+        <div>
+          <h3><span className="info-label">Email:</span> <span className="info-value">{user.email}</span></h3>
+        </div>
+      </div>
     </div>
   );
 }
